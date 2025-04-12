@@ -1,0 +1,383 @@
+/* Estilos Gerais */
+body {
+    background: #FFFFFF;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+body.zoom-active,
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Menu de Navegação */
+.game-menu {
+    display: flex;
+    justify-content: center;
+    background: #2c3e50;
+    padding: 15px;
+    gap: 10px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background: #34495e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background: #e74c3c;
+    font-weight: bold;
+}
+
+/* Conteúdo das Abas */
+.tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Layout do Tabuleiro */
+#Conteudo {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.board-container {
+    flex: 1;
+    min-width: 0;
+}
+
+.board-container img {
+    width: 100%;
+    height: auto;
+    border: 5px solid #382418;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: zoom-in;
+    transition: transform 0.3s;
+}
+
+.board-container img.zoomed {
+    transform: scale(1.8);
+    cursor: zoom-out;
+}
+
+.board-description {
+    flex: 1;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.board-description h2 {
+    color: #2c3e50;
+    margin-top: 0;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+}
+
+.board-description ul {
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+/* Sistema de Cartas */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 60px;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    overflow: visible;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+	z-index: auto;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.70);
+    z-index: 100; /* Eleva um pouco no hover */
+    position: relative;
+}
+.card img {
+    width: 120%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: auto !important;
+}
+
+/* Imagem com zoom - DEVE ficar ACIMA do overlay */
+/* Somente estas 3 regras controlam o zoom */
+/.card img.zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2.5);
+    z-index: 1001;
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: zoom-out;
+    box-shadow: 0 0 30px rgba(0,0,0,0.9);
+}
+
+
+/* ADICIONE estas novas regras para a aba de cartas */
+#cartas {
+    padding: 20px;
+    animation: fadeIn 0.5s;
+}
+
+#cartas h2 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #2c3e50;
+    margin: 20px 0;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+}
+
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: red;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+	z-index: 1002
+}
+
+.close-modal:hover {
+    color: #e74c3c;
+}
+
+/* Banner */
+.game-banner {
+    width: 100%;
+    max-height: 1360px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.game-banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: center;
+}
+
+/* Categorias */
+.category-divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 2.5rem 0 1.5rem;
+    grid-column: 1 / -1;
+    position: relative;
+}
+
+.category-divider::before,
+.category-divider::after {
+    content: "";
+    flex: 1 1 auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    height: 0;
+    transform: translateY(-50%);
+}
+
+.category-divider::before {
+    margin-right: 1.25rem;
+}
+
+.category-divider::after {
+    margin-left: 1.25rem;
+}
+
+.category-divider span {
+    padding: 0 1.25rem;
+    color: #2C3E50;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: #F0F8FF;
+    z-index: 1;
+}
+
+/* Contador de Visitas */
+.visit-counter {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#reset-counter {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 6px;
+    font-size: 12px;
+    cursor: pointer;
+    display: none;
+}
+
+#reset-counter:hover {
+    background: #c0392b;
+}
+
+.admin-mode .admin-only {
+    display: block !important;
+}
+
+/* Mensagens de Erro */
+.error-card {
+    background: #fff3e0;
+    padding: 15px;
+    border-left: 5px solid #ffa000;
+    color: #e65100;
+    font-size: 14px;
+}
+
+.error-card ul {
+    margin: 5px 0;
+    padding-left: 20px;
+}
+
+.error-card strong {
+    color: #bf360c;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #2c3e50;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #Conteudo {
+        flex-direction: column;
+    }
+    
+    .board-container, 
+    .board-description {
+        width: 100%;
+    }
+    
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .game-banner {
+        max-height: 150px;
+        margin-bottom: 20px;
+    }
+}
+
+/* Estilo específico para a grid de cartas */
+#cartas {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: none; /* Mantido para o sistema de abas */
+}
+
+#cartas h2 {
+    text-align: center;
+    margin-bottom: 3px;
+    color: #2c3e50;
+    border-bottom: 2px solid #FFFFFF;
+    padding-bottom: 1px;
+}
+
+
+/* Garantir que as seções sejam independentes */
+.tab-content {
+    display: none;
+    width: 100%;
+    /* Limpa qualquer float ou conteúdo vazado */
+    overflow: hidden;
+    position: relative;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Reset do conteúdo das cartas */
+#cartas {
+    all: initial; /* Reset completo */
+    display: none;
+    padding: 20px;
+}
+
+#cartas.active {
+    display: block;
+}
+
+/* Estilo para cada seção de conteúdo */
+.content-section {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Espaçamento entre seções */
+.section-spacer {
+    height: 6px;
+}
+

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerco de Batalha de choPai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="visit-counter">
+		Visitas: <span id="visit-counter">0</span>
+		<button id="reset-counter" class="admin-only">Resetar</button>
+	</div>
+    <div class="zoom-overlay"></div>
+    
+    <header>
+		<nav class="game-menu">
+			<button class="tab-btn active" data-tab="tabuleiro">Regras</button>
+			<button class="tab-btn" data-tab="cartas">Coleção de Cartas</button>
+		</nav>
+    </header>
+
+    <main>
+	
+	<div class="game-banner">
+		<img src="images/logo.png" alt="Banner do Jogo">
+	</div>
+	
+	
+	
+	<!-- Seção Coleção de Cartas -->
+	<section id="cartas" class="tab-content">
+		<h2></h2>
+		<div class="card-grid" id="cardContainer"></div>
+	</section>
+		
+    <!-- Seção Regras -->
+	<section id="tabuleiro" class="tab-content active">
+		<!-- Conteúdo 1 -->
+		<section id="Conteudo" class="tab-content active">
+                <div class="board-container">
+                    <img src="images/tabuleiro.png" alt="Tabuleiro do Jogo">
+                </div>
+				<div class="board-description">
+					<h2>Tabuleiro Principal</h2>
+					<p>Esse conteudo serve como maunal de regras e iremos abordar todas elas aqui no site. <br> O jogo contem as seguintes funções:</p>
+					<ul>
+						<li>Trilha do Poder</li>
+						<li>Trilha da Reputação</li>
+						<li>Exibição (local onde ficarão unidades aguardando serem recrutadas)</li>
+						<li>Descarte / Cemiterio</li>
+						<li>Mapa do jogo (mapa feito em hexagonos contendo os biomas existentes no jogo</li>
+						<li>Assentamentos (construções que unidades irão precisar para serem jogadas)</li>
+						<li>Taxa / Imposto</li>
+						<li>Area do Jogador (contendo trabalhadores, moedas, pinos e cubinhos de cores para cada jogador)</li>
+						<li>Area de Manufatura</li>
+				</ul>
+			</div>
+		</section>
+		
+		
+		
+		<br><br><br><br><br><br><br><br>
+		
+		
+		<section id="Conteudo" class="tab-content active">
+			<div class="board-container">
+				<img src="images/trilhapoder.png" alt="Tabuleiro do Jogo">
+			</div>
+			<div class="board-description">
+				<h2>Trilha do Poder</h2>
+				<p>Regras realicionadas a Trilha do Poder</p>
+				<ul>
+					<li>Coloque 1 pino de avanço em cada espaço 0 de cada torre</li>
+					<li>Toda vez que uma habilidade ou efeito fizer com que avance casas nesta trilha, escolha umas das 4 torres e avance um total equivalente.</li>
+					<li>Sempre que alcançar espaços marcados com algum bônus voce coleta o token daquela casa  na trilha.</li>
+					<li>Bonus de hexagonos Amarelo voce deve realizar imediatamente</li>
+					<li>Bonus de hexagonos Verde voce deve realizar no momento que desejar (guarde o token e descarte quando for usar)</li>
+					<li>Mais abaixo iremos falar individualmente sobre cada bônus</li>
+				</ul>
+			</div>
+		</section>		
+		<br><br><br><br><br><br><br><br>
+
+
+
+
+		<section id="Conteudo" class="tab-content active">
+			<div class="board-container">
+				<img src="images/trilhareputacao.png" alt="Tabuleiro do Jogo">
+			</div>
+			<div class="board-description">
+				<h2>Trilha da Reputação</h2>
+				<p>Falaremos sobre regras relacionadas a esta trilha</p>
+				<ul>
+					<li>A trilha começa no ponto 0, coloque seu pino de avanaço neste espaço</li>
+					<li>Toda vez que uma habilidade ou efeito fizer com que avance casas nesta trilha, avance um total equivalente.</li>
+					<li>Assim como a trilha do poder aqui temos beneficios conforme os avanços</li>
+					<li>Ao acançar a casa 4 o jogador deve escolher entre ganha +1 PA ou aumentar o limite de cartas não em +2 e comprar 2 cartas</li>
+					<li>A casa de numero 4 é o unico local onde todos os jogadores recebem bonus ao alcançar.</li>
+					<li>Nas demais casas teremos sempre 3 beneficios, dentre 1 deles fixo (moedas de ouro) e outros 2 aleatorios</li>
+					<li>O primeiro jogador ao alcançar essas casas deve escolher qual bonus deseja receber e retirar o token representante</li>
+					<li>A trilha da reputação esta vinculada tambem a Exibição (veja abaixo)</li>
+				</ul>
+			</div>
+		</section>
+		<br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+		<section id="Conteudo" class="tab-content active">
+			<div class="board-container">
+				<img src="images/exibicao.png" alt="exibicao">
+			</div>
+			<div class="board-description">
+				<h2>Exibição / Recrutamento</h2>
+				<p>Local especifico para unidades descartadas</p>
+				<ul>
+					<li>Sempre que uma carta de unidade for descartada, ela deve primeiramente passar por toda essa trilha.</li>
+					<li>AS cartas entram sempre da esquerda para a direita "empurrando" as demais para frente</li>
+					<li>Quando a exibição estiver completa e mais cartas forem entrando, coloque-as no descarte</li>
+					<li>É possivel jogar cartas de unidades diretamente da exibição no seu campo (caso tenho assentamentos apropriados)</li>
+					<li>Temos 8 espaços para unidades aqui e cada um deles marca diferentes valores para ser jogado</li>
+					<li>Haverá sempre um adicional em Moedas de Ouro para ser jogar diretamente</li>
+					<li>Quanto mais proximo do descarta uma unidade estiver, menor sera a quantidade de PA para se jogar</li>
+					<li>Para jogar unidades diretamente da exibição verifique seu avanço na Trilha da Reputação antes</li>
+
+				</ul>
+			</div>
+		</section>
+		<br><br><br><br><br><br><br><br>
+
+
+
+		<section id="Conteudo" class="tab-content active">
+			<div class="board-container">
+				<img src="images/descarte_cemiterio.png" alt="exibicao">
+			</div>
+			<div class="board-description">
+				<h2>Descarte e Cemiterio</h2>
+				<p>As cartas podem ser utilizadas mais vezes</p>
+				<ul>
+					<li>Quando uma habilidae ou efeito disser para descartar aqui é o local (descarte)</li>
+					<li>Algumas habilidades envolvem pegar cartas do descarte e/ou cemiterio</li>
+					<li>Descarte e Cemiterio são acessiveis ao jogadores, eles podem olhar a qualquer momento que desejarem</li>
+					<li>Caso uma unidade morra, coloque-a no cemiterio (ou outro lugar caso a carta diga o contrario)</li>
+				</ul>
+			</div>
+		</section>
+		<br><br><br><br><br><br><br><br>
+
+
+		<section id="Conteudo" class="tab-content active">
+			<div class="board-container">
+				<img src="images/assentamentos.png" alt="exibicao">
+				<!-- <img src="images/assentamento2.png" alt="exibicao"> -->
+			</div>
+			<div class="board-description">
+				<h2>Assentamtos</h2>
+				<p>Construa primeiro, jogue unidades depois</p>
+				<ul>
+					<li>Durante seu turno voce pode escolher a ação de "Construir Assentamento", gastando PA e Moedas de Ouro</li>
+					<li>Para acomodar unidades em jogo, o jogador precisa antes criar assentamentos de tamanho que as abrigam</li>
+					<li>Gaste um total de 2 PA e um valor em Moedas de Ouro igual 2x o tamanho do assentamento que deseja constuir, 2 PO para assentamentos de tamanho 1, 4 PO para tamanhos de 2 e etc</li>
+					<li>Escolha atentamente onde construir seus assentamentos pois construir seu proximo deverá estar adjacente de algum outro</li>
+					<li>Repare nos icones de biomas das cartas de unidades que voce quer jogar, uma unidade com 2 simbolos de um determinado bioma significa que voce precisa construri um assentamento de tamanho 2 em um bioma especifico daquela unidade</li>
+					<li>Exitem 5 tamanhos de assentamentos normais e 1 especial</li>
+					<li>Quando for construir um assentamento normal, coloque-o dentro do espaço hexagono do mapa contendo o bioma desejado</li>
+					<li>O gasto para criar um assentamento especial é de 2 PA e 6 PO mais 1 recurso de cada bioma ao qual o assentamento esta sendo colocado</li>
+					<li>Seguindo o exemplo da "IMAGEM 2" para construir o assentamento especial, ojogador "X" precisou gasar 2 PA e 6 PO e um total de 1 recurso de cada bioma (1 essencia abissal, 1 madeira e 1 gema). Iremos falar sobre esses recursos mais abaixo</li>
+					<li>O joador pode realizar esta ação multiplas vezes caso tenha todos os recursos para cada uma delas</li>
+				</ul>
+			</div>
+		</section>
+		<br><br><br><br><br><br><br><br>
+
+
+		<section id="Conteudo" class="tab-content active">
+			<div class="board-container">
+				<img src="images/area_do_jogador.png" alt="exibicao">
+			</div>
+			<div class="board-description">
+				<h2>Area do Jogador</h2>
+				<p>Organize tudo aqui</p>
+				<ul>
+					<li>Area exclusiva para organizar moedas, trabalhadores e tudo mais</li>
+					<li>Aqui temos tambem o indicativo mostrando quando novos trabalhadores são desbloqueados</li>
+					<li>Cada jogador começa o jogo com 5 pinos distribuidos nas trilhas de pontuação, 30 cubinhos da mesma cor para serem colocados nos assentamentos indicando que uma unidade esta ocupando aquele local e 2 trabalhadores.</li>
+					<li>No primeiro slot você libera um novo trabalhador assim que alcançar a 14ª casa em uma das trilhas do poder</li>
+					<li>No segundo slot voce libera um novo trabalhador assim que alcancar 8 pontos de reputação</li>
+					<li>No terceiro slot voce desbloqueia um novo trabalhador assim que concluir sua primeira ação de Apoio</li>
+				</ul>
+			</div>
+		</section>
+		<br><br><br><br><br><br><br><br>
+
+
+
+		<section id="Conteudo" class="tab-content active">
+			<div class="board-container">
+				<img src="images/recursos.png" alt="exibicao">
+			</div>
+			<div class="board-description">
+				<h2>Recursos</h2>
+				<p>1 Tipo diferente de Recurso por bioma</p>
+				<ul>
+					<li>Durante seu turno cada jogador pode realizar a ação de "Alocar ou Realocar" trabalhadores por 1 PA</li>
+					<li>Para realizar esta ação o jogador deve ter um assentamento construido em algum bioma</li>
+					<li>Coloque a quantidade que desejar trabalhador da area do jogador em um dos 5 locais de recursos</li>
+					<li>Cada trabalhador gera 1 recurso do bioma ao qual esta trabalhando que é produzido sempre no inicio do turno</li>
+					<li>Coloque um marcador indicando quantas rodadas os trabalhadores estão coletando recursos. O limite de rodadas de coleta é 2x a quantidade de trabalhadores que aquele jogador possui</li>
+					<li>Os recursos permanecem com o trabalhador naquele local e para recolhe-los é preciso a ação de "Realocar trabalhadores". Coloque todos os recursos coletados na Area do jogador e depois reorganize os trabalhadores de volta da maneira que achar melhor.</li>
+					<li>O jogador por trocar os recursos por Moedas de Ouro a qualquer momento durante seu turno na porporção de 1:2</li>
+					<li>Caso deseja trocar valores iguais ou superior a 3 recursos iguais a proporção é reduzida para 1:1</li>
+				</ul>
+			</div>
+		</section>
+		<br><br><br><br><br><br><br><br>
+
+
+
+
+		<section id="Conteudo" class="tab-content active">
+			<div class="board-container">
+				<img src="images/taxa_imposto.png" alt="exibicao">
+			</div>
+			<div class="board-description">
+				<h2>Taxa / Imposto</h2>
+				<p>Troque reputação/poder por Ouro</p>
+				<ul>
+					<li>Coloque um pino de trilha no ponto demarcado</li>
+					<li>Qualquer jogador em seu turno pode realizar a ação de Imposto. Essa ação consiste em aumentar impostos para coletar Ouro em troca de reputação e pontos de poder</li>
+					<li>Esta ação custa "X" PA para ser realizada (minimo 1) e 2 recursos qualquer a escolha do jogador</li>
+					<li>Na primeira casa o jogador recebe um total de 4+X PO</li>
+					<li>Na segunda casa o jogador recebe um total de 6+X PO</li>
+					<li>Ao passa para a proxima casa o jogador deve passar pela casa 3, perder 2 pontos de reputação e entao avançar para a casa 4</li>
+					<li>Na quarta casa o jogador recebe um total de 6+X PO</li>
+					<li>Na quinta casa o jogador recebe 10+X PO</li>
+					<li>Agora ele pode escolher entre avançar para a casa 6 (sentido horario) ou 6.1 (cortando caminho pelo centro)</li>
+					<li>Em ambas as escolhas ele tera penalidades, porem cabe a ele decidir qual a melhor ação naquele momento</li>
+					<li>Caso escolha o atalho, ele perde 2 pontos de reputação e 4 pontos de poder (deve recuar uma quantidade de casas nas duas trilhas) e retorna a segunda casa</li>
+					<li>Caso escolha continuar ele deve passar pela 6ª casa, perder 3 pontos de reputação e retornar para a casa 1</li>
+					<li>Este é um processo continuo, se repetindo diversas vezes</li>
+					<li>Durante a ação de Alocar trabalahdores o jogador pode escolher colocar um trabalhador na area de Taxa</li>
+
+				</ul>
+			</div>
+		</section>
+		<br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <footer>
+        <p>© 2025 Cerco de Batalha de choPai</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
